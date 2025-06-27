@@ -29,6 +29,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className="antialiased bg-background text-foreground transition-colors duration-300">
         <SplashCursor />
