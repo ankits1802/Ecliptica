@@ -1,0 +1,437 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 94.1%;
+    /* Light Gray #F0F0F0 */
+    --foreground: 240 10% 3.9%;
+    /* Dark Bluish Gray for text */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262 52% 51%;
+    /* Deep Purple #673AB7 */
+    --primary-h: 262;
+    /* Hue for primary color */
+    --primary-s: 52%;
+    /* Saturation for primary color */
+    --primary-l: 51%;
+    /* Lightness for primary color */
+    --primary-foreground: 0 0% 98%;
+    /* White */
+    --secondary: 262 52% 85%;
+    /* Lighter shade of primary */
+    --secondary-foreground: 262 52% 20%;
+    /* Darker purple for text on light purple */
+    --muted: 0 0% 85%;
+    /* Lighter gray */
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 228 50% 48%;
+    /* Indigo #3F51B5 */
+    --accent-foreground: 0 0% 98%;
+    /* White */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 262 52% 51%;
+    /* Primary color for rings */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    /* Slightly darker than default dark */
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 6.1%;
+    /* Darker card */
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 6.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 262 80% 60%;
+    /* Brighter Purple for dark mode */
+    --primary-h: 262;
+    --primary-s: 80%;
+    --primary-l: 60%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 262 80% 30%;
+    /* Darker shade of primary for dark mode */
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 228 70% 55%;
+    /* Brighter Indigo for dark mode */
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 262 80% 60%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+
+  body {
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Body styles moved to the above section to be applied with theme */
+}
+
+/* Card Underglow Effect */
+@layer components {
+  .card {
+    /* Default subtle underglow, more visible in dark mode */
+    box-shadow: 0 4px 15px -2px hsla(var(--primary-h), var(--primary-s), calc(var(--primary-l) + 5%), 0.35);
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card:hover {
+    /* Enhanced purple glow on hover */
+    box-shadow: 0 10px 25px 0px hsla(var(--primary-h), var(--primary-s), calc(var(--primary-l)+5%), 0.4);
+    @apply ring-2 ring-primary ring-opacity-60;
+  }
+}
+
+/* Profile Picture Animated Glow */
+@keyframes pulse-glow-primary {
+  0% {
+    box-shadow: 0 0 15px 3px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.35),
+      0 0 3px 1px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.25);
+  }
+
+  50% {
+    box-shadow: 0 0 30px 10px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.55),
+      0 0 6px 2px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.45);
+  }
+
+  100% {
+    box-shadow: 0 0 15px 3px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.35),
+      0 0 3px 1px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.25);
+  }
+}
+
+@layer utilities {
+  .hero-profile-image-container {
+    position: relative;
+    width: 350px;
+    /* Should match image width */
+    height: 350px;
+    /* Should match image height */
+    border-radius: 50%;
+    /* Make it round */
+    animation: pulse-glow-primary 3s infinite alternate ease-in-out;
+  }
+
+  /* Added animations */
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-slideInFromLeft {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+  }
+
+  .animate-slideInFromRight {
+    animation: slideInFromRight 0.8s ease-out forwards;
+  }
+
+  .animation-delay-200ms {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400ms {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600ms {
+    animation-delay: 0.6s;
+  }
+
+  .animation-delay-800ms {
+    animation-delay: 0.8s;
+  }
+
+  /* For elements to be initially hidden before animation */
+  .initial-hidden {
+    opacity: 0;
+  }
+
+  /* Flip animation for AnimatedTitle */
+  .flipping-text {
+    display: inline-block;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes flipOut {
+    from {
+      transform: rotateX(0deg) translateY(0%);
+      opacity: 1;
+    }
+
+    to {
+      transform: rotateX(90deg) translateY(25%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes flipIn {
+    from {
+      transform: rotateX(-90deg) translateY(-25%);
+      opacity: 0;
+    }
+
+    to {
+      transform: rotateX(0deg) translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  .animate-flip-out {
+    animation: flipOut 0.4s ease-in-out forwards;
+  }
+
+  .animate-flip-in {
+    animation: flipIn 0.4s ease-in-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Preloader letter animations */
+@keyframes letterPopUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes letterDropDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+/* Starfield animation */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Statistics counter animation */
+@keyframes countUp {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-count-up {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+/* Infinite Logo Scroller Animation */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scrollLogos {
+  animation: scrollLogos 40s linear infinite;
+}
+
+/* Optional: Pause animation on hover for the scroller container */
+.tech-scroller-container:hover .animate-scrollLogos {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-seamless {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-seamless {
+  animation: scroll-seamless 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* Pause animation on hover for better UX */
+.tech-scroller-container:hover .animate-scroll-seamless {
+  animation-play-state: paused;
+}
+
+/* Styles for ImageAutoSlider */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.infinite-scroll {
+  animation: scroll-right 40s linear infinite;
+}
+
+.scroll-container {
+  mask: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.image-item {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.image-item:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Hiding layout elements for the personal page intro */
+body.personal-page-dark header,
+body.personal-page-dark .blackhole-video-container,
+body.personal-page-dark .scroll-progress-bar {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
