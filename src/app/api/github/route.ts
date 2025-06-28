@@ -32,7 +32,6 @@ export async function GET(request: NextRequest) {
     const sortedRepos = repos
       .filter(repo => !repo.fork && repo.name !== GITHUB_USERNAME) // also filter out the profile README repo
       .sort((a, b) => (b.stargazers_count + b.forks_count) - (a.stargazers_count + a.forks_count))
-      .slice(0, 12); // Limit to a reasonable number
 
     const projects = await Promise.all(
       sortedRepos.map(async (repo) => {
